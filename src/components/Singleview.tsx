@@ -13,7 +13,16 @@ const SingleView = (props: {
     // - use img tag for displaying images
     // - use video tag for displaying videos
     //
-    <dialog open>{item && <img src={item.filename} alt={item.title} />}</dialog>
+    <dialog open>
+      <button
+        onClick={() => {
+          setSelectedItem(undefined);
+        }}
+      >
+        Close
+      </button>
+      {item && <img src={item.filename} alt={item.title} />}
+    </dialog>
   );
 };
 export default SingleView;
