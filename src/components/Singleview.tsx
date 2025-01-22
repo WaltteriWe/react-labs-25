@@ -21,7 +21,6 @@ const SingleView = (props: {
       >
         Close
       </button>
-      {item && <img src={item.filename} alt={item.title} />}
     </dialog>
   );
 };
