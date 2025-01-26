@@ -1,13 +1,13 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Home from './views/Home';
-import Layout from './components/layout';
 import Profile from './views/Profile';
 import Upload from './views/Upload';
 import Single from './views/Single';
+import Layout from './components/Layout';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

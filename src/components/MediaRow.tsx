@@ -7,7 +7,7 @@ type MediaRowProps = {
 };
 
 const MediaRow = (props: MediaRowProps) => {
-  const {item, setSelectedItem} = props;
+  const {item} = props;
   return (
     // TODO: move <tr> element  for each item property from Home.tsx here
     <tr key={item.media_id}>
