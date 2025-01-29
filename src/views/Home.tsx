@@ -1,56 +1,16 @@
-import {MediaItemWithOwner, UserWithNoPassword} from 'hybrid-types/DBTypes';
+import {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import MediaRow from '../components/MediaRow';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import SingleView from '../components/Singleview';
-import {fetchData} from '../lib/functions';
+import {useMedia} from '../hooks/apiHooks';
 
 const Home = () => {
-  const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
   const [selectedItem, setSelectedItem] = useState<
     MediaItemWithOwner | undefined
   >(undefined);
   console.log(selectedItem);
 
-  useEffect(() => {
-    const getMedia = async () => {
-      try {
-        // all media without owner info
-        const media = await fetchData<MediaItemWithOwner[]>(
-          import.meta.env.VITE_MEDIA_API + '/media',
-        );
-        // get all owners based on id
-        const mediaWithOwner: MediaItemWithOwner[] = await Promise.all(
-          media.map(async (item) => {
-            const owner = await fetchData<UserWithNoPassword>(
-              import.meta.env.VITE_AUTH_API + '/users/' + item.media_id,
-            );
-
-            const mediaItemWithOwner: MediaItemWithOwner = {
-              ...item,
-              username: owner.username,
-            };
-
-            if (
-              mediaItemWithOwner.screenshots &&
-              typeof mediaItemWithOwner.screenshots === 'string'
-            ) {
-              mediaItemWithOwner.screenshots = JSON.parse(
-                mediaItemWithOwner.screenshots as string,
-              ).map((screenshot: string) => {
-                return import.meta.env.VITE_FILE_URL + screenshot;
-              });
-            }
-            return mediaItemWithOwner;
-          }),
-        );
-
-        setMediaArray(mediaWithOwner);
-      } catch (error) {
-        console.log((error as Error).message);
-      }
-    };
-    getMedia();
-  }, []);
+  const {mediaArray} = useMedia();
 
   console.log(mediaArray);
 
