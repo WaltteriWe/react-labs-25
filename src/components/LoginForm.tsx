@@ -1,15 +1,30 @@
+import {useNavigate} from 'react-router-dom';
+import {useAuthentication} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
 import {Credentials} from '../types/LocalTypes';
 
-// LoginForm.tsx
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const {postLogin} = useAuthentication();
+
   const initValues: Credentials = {
     username: 'waltteri',
     password: 'lemonke',
   };
 
-  const doLogin = () => {
-    // use apiHooks to login
+  const doLogin = async () => {
+    try {
+      const loginResult = await postLogin(inputs as Credentials);
+      console.log('loginResult', loginResult);
+      if (loginResult) {
+        localStorage.setItem('token', loginResult.token);
+        alert('Login success');
+        navigate('/');
+      }
+      console.log(inputs);
+    } catch (error) {
+      console.log((error as Error).message);
+    }
   };
 
   const {handleSubmit, handleInputChange, inputs} = useForm(
