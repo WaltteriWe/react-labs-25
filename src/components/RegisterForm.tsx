@@ -58,7 +58,7 @@ const RegisterForm = () => {
             id="regemail"
             onChange={handleInputChange}
             autoComplete="email"
-            value={inputs.password}
+            value={inputs.email}
           />
         </div>
         <button type="submit">Register</button>

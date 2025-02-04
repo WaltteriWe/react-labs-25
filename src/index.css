@@ -7,11 +7,11 @@
   color: rgba(255, 255, 255, 0.87);
   /*   background-color: #242424;
  */
-  background-image: url('./kanye-happy.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  text-align: center;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,24 +28,31 @@
 /* nav */
 nav ul {
   list-style-type: none;
+  background-image: url('./kanye-happy.png');
+  background-size: contain;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: #000000;
   display: flex;
   justify-content: flex-end;
+  border-radius: 50px;
 }
 
 nav a {
   display: block;
-  color: white;
+  background-color: #000000;
+  color: rgb(255, 225, 0);
   text-align: center;
   padding: 1rem;
   text-decoration: none;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease; /* Add transition property */
 }
 
 nav a:hover {
-  background-color: #111111;
+  background-color: #0a3401;
 }
 
 /* media item card */
@@ -61,16 +68,20 @@ td img {
 
 td button:hover,
 a:hover {
-  background-color: #111111;
+  background-color: #0a3401;
 }
 
 td a {
   color: white;
   text-decoration: none;
-  background-color: #363636;
-  color: white;
+  background-color: #000000;
+  color: rgb(255, 225, 0);
   border: none;
   padding: 0.5rem;
+  border-radius: 50px;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
 
 /* media item dialog */
