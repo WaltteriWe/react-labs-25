@@ -26,9 +26,7 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
         localStorage.setItem('token', loginResult.token);
       }
       // TODO: set user to state
-      if (loginResult && loginResult.user) {
-        setUser(loginResult.user);
-      }
+      setUser(loginResult.user);
       // TODO: navigate to home
       navigate('/');
     } catch (e) {
@@ -61,13 +59,10 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
       if (!token) {
         return;
       }
-      const userResponse = await getUserByToken(token);
-      if (!userResponse) {
-        throw new Error('User not found');
-      }
+      const userResponse: UserResponse = await getUserByToken(token);
       // TODO: set user to state
       setUser(userResponse.user);
-      // TODO: navigate to home
+      // when page is refreshed, the user is redirected to origin (see ProtectedRoute.tsx)
       const origin = location.state.from.pathname || '/';
       navigate(origin);
     } catch (e) {

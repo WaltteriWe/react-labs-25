@@ -17,12 +17,25 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./after-hours.jpg');
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b22222;
 }
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  border-radius: 50px;
+  border: 5px solid #000000;
+  background-image: url('./kanye-happy.png');
+  background-size: contain;
 }
 
 /* nav */
@@ -150,3 +163,30 @@ button {
   border: none;
   cursor: pointer;
 }
+
+/* @keyframes neon {
+  0%,
+  100% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff0000,
+      0 0 30px #ff0008,
+      0 0 40px #ff0026,
+      0 0 50px #ff0000,
+      0 0 60px #ff0066,
+      0 0 70px #ff0008;
+  }
+  50% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #ff0000,
+      0 0 30px #ff0048,
+      0 0 40px rgb(255, 0, 30),
+      0 0 50px #ff0059,
+      0 0 60px #ff0011,
+      0 0 70px #ff0000;
+  }
+}
+ */

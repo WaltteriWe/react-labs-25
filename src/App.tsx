@@ -35,6 +35,7 @@ const App = () => {
             <Route path="/single" element={<Single />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />}></Route>
+
             {/* TODO: add missing routes */}
           </Route>
         </Routes>
