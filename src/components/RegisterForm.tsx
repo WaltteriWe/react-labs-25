@@ -1,6 +1,6 @@
 import {useUser} from '../hooks/apiHooks';
+import {useForm} from '../hooks/formHooks';
 import {RegisterCredentials} from '../types/LocalTypes';
-import useForm from '../hooks/formHooks';
 
 const RegisterForm = () => {
   const {postRegister} = useUser();
@@ -13,10 +13,10 @@ const RegisterForm = () => {
   const doRegister = async () => {
     try {
       const registerResult = await postRegister(inputs as RegisterCredentials);
-      console.log('reg result', registerResult);
-      console.log(inputs);
+      console.log('doLogin result', registerResult);
     } catch (error) {
-      console.log((error as Error).message);
+      console.error((error as Error).message);
+      // Display error to user here(?)
     }
   };
 
@@ -30,24 +30,23 @@ const RegisterForm = () => {
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="UserWithLevelname">Username</label>
+          <label htmlFor="regusername">Username</label>
           <input
             name="username"
             type="text"
-            id="UserWithLevelname"
+            id="regusername"
             onChange={handleInputChange}
             autoComplete="username"
           />
         </div>
         <div>
-          <label htmlFor="registerpassword">Password</label>
+          <label htmlFor="regpassword">Password</label>
           <input
             name="password"
             type="password"
-            id="registerpassword"
+            id="regpassword"
             onChange={handleInputChange}
             autoComplete="current-password"
-            value={inputs.password}
           />
         </div>
         <div>
@@ -58,7 +57,6 @@ const RegisterForm = () => {
             id="regemail"
             onChange={handleInputChange}
             autoComplete="email"
-            value={inputs.email}
           />
         </div>
         <button type="submit">Register</button>

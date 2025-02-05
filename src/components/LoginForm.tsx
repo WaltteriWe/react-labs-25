@@ -1,20 +1,20 @@
-import useForm from '../hooks/formHooks';
+import {useForm} from '../hooks/formHooks';
 import {Credentials} from '../types/LocalTypes';
 import {useUserContext} from '../hooks/ContextHooks';
 
 const LoginForm = () => {
+  const {handleLogin} = useUserContext();
   const initValues: Credentials = {
     username: '',
     password: '',
   };
 
-  const {handleLogin} = useUserContext();
-
   const doLogin = async () => {
     try {
       handleLogin(inputs as Credentials);
-    } catch (e) {
-      console.log((e as Error).message);
+    } catch (error) {
+      console.error((error as Error).message);
+      // Display error to user here(?)
     }
   };
 
@@ -28,13 +28,14 @@ const LoginForm = () => {
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="UserWithLevelname">Username</label>
+          <label htmlFor="loginusername">Username</label>
           <input
             name="username"
             type="text"
-            id="UserWithLevelname"
+            id="loginusername"
             onChange={handleInputChange}
             autoComplete="username"
+            // value={inputs.username}
           />
         </div>
         <div>
@@ -45,7 +46,7 @@ const LoginForm = () => {
             id="loginpassword"
             onChange={handleInputChange}
             autoComplete="current-password"
-            value={inputs.password}
+            // value={inputs.password}
           />
         </div>
         <button type="submit">Login</button>
