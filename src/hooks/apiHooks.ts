@@ -127,10 +127,10 @@ const useAuthentication = () => {
 };
 
 const useUser = () => {
-  // TODO: implement auth/user server API connections here
+  // Function to get user by token
   const getUserByToken = async (token: string) => {
     const options = {
-      headers: {Authorization: 'Bearer ' + token},
+      headers: { Authorization: 'Bearer ' + token },
     };
     try {
       return await fetchData<UserResponse>(
@@ -142,23 +142,45 @@ const useUser = () => {
     }
   };
 
-  const postRegister = async (credentials: RegisterCredentials) => {
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(credentials),
-      headers: {'Content-Type': 'application/json'},
-    };
+  // Function to check if username is available
+  const getUserNameAvailable = async (username: string) => {
     try {
-      return await fetchData<UserResponse>(
-        import.meta.env.VITE_AUTH_API + '/users',
-        options,
+      return await fetchData<MessageResponse>(
+        import.meta.env.VITE_AUTH_API + '/users/username/' + username,
       );
     } catch (error) {
       throw new Error((error as Error).message);
     }
   };
 
-  return {getUserByToken, postRegister};
+  // Function to check if email is available
+  const getEmailAvailable = async (email: string) => {
+    try {
+      return await fetchData<MessageResponse>(
+        import.meta.env.VITE_AUTH_API + '/users/email/' + email,
+      );
+    } catch (error) {
+      throw new Error((error as Error).message);
+    }
+  };
+
+
+  // Function to register a new user
+  const postRegister = async (credentials: RegisterCredentials) => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    return await fetchData<MessageResponse>(
+      import.meta.env.VITE_AUTH_API + '/users/register',
+      options,
+    );
+  };
+
+  return { getUserByToken, getUserNameAvailable, getEmailAvailable, postRegister };
 };
 
 const useComments = () => {

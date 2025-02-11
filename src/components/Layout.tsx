@@ -1,40 +1,40 @@
-import {Link, Outlet} from 'react-router';
-import {useUserContext} from '../hooks/ContextHooks';
-import {useEffect} from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useUserContext } from '../hooks/ContextHooks';
 
 const Layout = () => {
-  // jos käyttäjää ei ole, kutsu handleAutoLogin()
-  const {user, handleAutoLogin} = useUserContext();
+  const { user, handleAutoLogin } = useUserContext();
+
   useEffect(() => {
     if (!user) {
       handleAutoLogin();
     }
-  }, []);
+  }, [user, handleAutoLogin]);
 
   return (
     <>
       <h1>My App</h1>
       <div>
         <nav>
-          <ul>
+          <ul className='m-0 list-none p-0bg-stone-600 flex justify-end'>
             <li>
-              <Link to="/">Home</Link>
+              <Link className="block p-4 text-center hover:bg-stone-900 duration-800 ease-in-out" to="/">Home</Link>
             </li>
             {user ? (
               <>
                 <li>
-                  <Link to="/profile">Profile</Link>
+                  <Link className="block p-4 text-center hover:bg-stone-900 duration-800 ease-in-out" to="/profile">Profile</Link>
                 </li>
                 <li>
-                  <Link to="/upload">Upload</Link>
+                  <Link className="block p-4 text-center hover:bg-stone-900 duration-800 ease-in-out" to="/upload">Upload</Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link className="block p-4 text-center hover:bg-stone-900 duration-800 ease-in-out" to="/logout">Logout</Link>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/login">Login</Link>
+                <Link className="block p-4 text-center hover:bg-stone-900 duration-800 ease-in-out" to="/login">Login</Link>
               </li>
             )}
           </ul>
@@ -42,7 +42,6 @@ const Layout = () => {
         <main>
           <Outlet />
         </main>
-        <footer></footer>
       </div>
     </>
   );

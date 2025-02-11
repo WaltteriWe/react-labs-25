@@ -61,11 +61,12 @@ const Upload = () => {
 
   return (
     <>
+    <div className='flex flex-col items-center justify-center '>
       <h1>Upload</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
-          <input
+          <input className='m-4 p-4 rounded-lg bg-black'
             name="title"
             type="text"
             id="title"
@@ -76,6 +77,7 @@ const Upload = () => {
         <div>
           <label htmlFor="description">Description</label>
           <textarea
+          className='m-4 p-4 rounded-lg bg-black'
             name="description"
             rows={5}
             id="description"
@@ -85,7 +87,7 @@ const Upload = () => {
         </div>
         <div>
           <label htmlFor="file">File</label>
-          <input
+          <input className='m-4 p-4 rounded-lg bg-black'
             name="file"
             type="file"
             id="file"
@@ -95,6 +97,7 @@ const Upload = () => {
           />
         </div>
         <img
+        className='flex justify-center items-center'
           src={
             file
               ? URL.createObjectURL(file)
@@ -104,6 +107,7 @@ const Upload = () => {
           width="200"
         />
         <button
+        className="bg-black rounded-lg p-4 m-4 flex-col"
           type="submit"
           disabled={
             file && inputs.title.length > 3 && inputs.description.length > 0
@@ -113,11 +117,12 @@ const Upload = () => {
         >
           {uploading ? 'Uploading..' : 'Upload'}
         </button>
-        <button type="reset" onClick={resetForm}>
+        <button className="bg-black rounded-lg p-4 m-4 flex-col" type="reset" onClick={resetForm}>
           Reset
         </button>
         <p>{uploadResult}</p>
-      </form>
+      </form> </div>
+
     </>
   );
 };

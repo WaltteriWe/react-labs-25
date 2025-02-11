@@ -1,12 +1,13 @@
-:root {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import 'tailwindcss';
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  /*   background-color: #242424;
- */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-stone-50);
+    background-color: var(--color-stone-800);
+  }
+  :root {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -17,176 +18,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./after-hours.jpg');
-  font-size: 1rem;
-  font-weight: bold;
-  color: #b22222;
+  background-image: url('/background-red-3.jpg');
+  color: white;
 }
-
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0rem;
+  max-width: var(--container-7xl);
+  margin: auto;
+  padding: calc(var(--spacing) * 8);
 }
-
 h1 {
-  font-size: 2rem;
-  margin: 0;
-  border-radius: 50px;
-  border: 5px solid #000000;
-  background-image: url('./kanye-happy.png');
+  font-size: var(--text-2xl);
+  background-image: url('/kanye-happy.png');
   background-size: contain;
-}
 
-/* nav */
-nav ul {
-  list-style-type: none;
-  background-image: url('./kanye-happy.png');
-  background-size: contain;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #000000;
-  display: flex;
-  justify-content: flex-end;
-  border-radius: 50px;
 }
-
-nav a {
-  display: block;
-  background-color: #000000;
-  color: rgb(255, 225, 0);
-  text-align: center;
-  padding: 1rem;
-  text-decoration: none;
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease; /* Add transition property */
+h2 {
+  font-size: var(--text-xl);
 }
-
-nav a:hover {
-  background-color: #0a3401;
 }
-
-/* media item card */
-td {
-  padding: 1rem;
-}
-
-td img {
-  width: 260px;
-  height: 200px;
-  object-fit: cover;
-}
-
-td button:hover,
-a:hover {
-  background-color: #0a3401;
-}
-
-td a {
-  color: white;
-  text-decoration: none;
-  background-color: #000000;
-  color: rgb(255, 225, 0);
-  border: none;
-  padding: 0.5rem;
-  border-radius: 50px;
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease;
-}
-
-/* media item dialog */
-dialog {
-  position: fixed;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  color: rgba(255, 255, 255, 0.87);
-}
-
-dialog img,
-video {
-  height: 70%;
-  object-fit: contain;
-}
-
-/* single view */
-img,
-video {
-  max-width: 100%;
-}
-
-/* Form */
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-form img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-
-form input {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-form textarea {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #363636;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-/* @keyframes neon {
-  0%,
-  100% {
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #ff0000,
-      0 0 30px #ff0008,
-      0 0 40px #ff0026,
-      0 0 50px #ff0000,
-      0 0 60px #ff0066,
-      0 0 70px #ff0008;
-  }
-  50% {
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #ff0000,
-      0 0 30px #ff0048,
-      0 0 40px rgb(255, 0, 30),
-      0 0 50px #ff0059,
-      0 0 60px #ff0011,
-      0 0 70px #ff0000;
-  }
-}
- */

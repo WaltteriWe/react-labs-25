@@ -4,5 +4,7 @@
   "tabWidth": 2,
   "useTabs": false,
   "bracketSpacing": false,
-  "pringWidth": 120
+  "pringWidth": 120,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindStyleSheet": "./src/index.css"
 }
