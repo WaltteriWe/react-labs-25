@@ -13,7 +13,7 @@ const Layout = () => {
 
   return (
     <>
-      <h1>My App</h1>
+      <h1 className='font-bold text-pink-600 neon-text'>Aldi Fever Dream INC</h1>
       <div>
         <nav>
           <ul className='m-0 list-none p-0bg-stone-600 flex justify-end'>

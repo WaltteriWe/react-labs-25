@@ -1,5 +1,6 @@
 import { MediaItemWithOwner } from 'hybrid-types/DBTypes';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import Likes from '../components/Likes';
 
 const Single = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -25,10 +26,12 @@ const Single = () => {
         />
       )}
       <div className="m-4 p-4 rounded-lg bg-black text-white max-w-full lg:max-w-3xl">
+        <Likes item={item} likes={5} />
         <p className="mb-2">{item.description}</p>
         <p className="mb-2">Owner: {item.username}</p>
         <p className="mb-2">Type: {item.media_type}</p>
         <p className="mb-2">Size: {Math.round(item.filesize / 1024)} kB</p>
+
       </div>
       <button
         className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-red-700 ease-in-out duration-300"

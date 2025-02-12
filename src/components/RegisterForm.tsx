@@ -67,7 +67,7 @@ const RegisterForm = () => {
 
   return (
     <>
-      <h1>Register</h1>
+      <h1 className='neon-text font-bold text-pink-600'>Register</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center"
@@ -75,7 +75,7 @@ const RegisterForm = () => {
         <div className="flex w-4/5 flex-col">
           <label htmlFor="regusername">Username</label>
           <input
-            className="my-2.5 rounded-md border p-2.5"
+            className="my-2.5 rounded-md border-2 border-red-500 neon-shadow p-2.5 "
             name="username"
             type="text"
             id="regusername"
@@ -89,7 +89,7 @@ const RegisterForm = () => {
         <div className="flex w-4/5 flex-col">
           <label htmlFor="regpassword">Password</label>
           <input
-            className="my-2.5 rounded-md border-1 p-2.5"
+            className="my-2.5 rounded-md border-2 border-red-500 neon-shadow p-2.5"
             name="password"
             type="password"
             id="regpassword"
@@ -100,7 +100,7 @@ const RegisterForm = () => {
         <div className="flex w-4/5 flex-col">
           <label htmlFor="regemail">Email</label>
           <input
-            className="my-2.5 rounded-md border-1 p-2.5"
+            className="my-2.5 rounded-md border-2 border-red-500 neon-shadow p-2.5"
             name="email"
             type="email"
             id="regemail"

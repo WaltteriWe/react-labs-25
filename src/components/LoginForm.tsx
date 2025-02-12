@@ -35,14 +35,14 @@ const LoginForm = () => {
             id="loginusername"
             onChange={handleInputChange}
             autoComplete="username"
-            className="m-4 p-4 rounded-lg w-3/4"
+            className="m-4 p-4 rounded-lg w-3/4 border-2 border-red-500 neon-shadow"
             // value={inputs.username}
           />
         </div>
         <div>
           <label htmlFor="loginpassword">Password</label>
           <input
-          className="m-4 p-4 rounded-lg w-3/4"
+          className="m-4 p-4 rounded-lg w-3/4 border-2 border-red-500 neon-shadow"
             name="password"
             type="password"
             id="loginpassword"
