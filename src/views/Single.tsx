@@ -1,6 +1,7 @@
 import { MediaItemWithOwner } from 'hybrid-types/DBTypes';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import Likes from '../components/Likes';
+import Comments from '../components/Comments';
 
 const Single = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -9,7 +10,7 @@ const Single = () => {
 
   return (
     <div className="flex flex-col items-center justify-center ">
-      <h2 className="text-3xl font-bold">Single</h2>
+      <h2 className="text-3xl font-bold">CHECK THIS SICK POST!</h2>
       <h3 className="text-2xl">{item.title}</h3>
       <p className="text-gray-400 mb-4">{new Date(item.created_at).toLocaleString('fi-FI')}</p>
       {item.media_type.includes('image') ? (
@@ -25,8 +26,9 @@ const Single = () => {
           controls
         />
       )}
-      <div className="m-4 p-4 rounded-lg bg-black text-white max-w-full lg:max-w-3xl">
+      <div className="m-4 p-4 rounded-lg bg-black text-white max-w-full lg:max-w-3xl items-center justify-center">
         <Likes item={item} likes={5} />
+        <Comments item={item} />
         <p className="mb-2">{item.description}</p>
         <p className="mb-2">Owner: {item.username}</p>
         <p className="mb-2">Type: {item.media_type}</p>
