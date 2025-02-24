@@ -1,49 +1,37 @@
-import { MediaItemWithOwner } from 'hybrid-types/DBTypes';
-import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import {MediaItemWithOwner} from 'hybrid-types/DBTypes';
+import {NavigateFunction, useLocation, useNavigate} from 'react-router';
 import Likes from '../components/Likes';
 import Comments from '../components/Comments';
 
 const Single = () => {
   const navigate: NavigateFunction = useNavigate();
-  const { state } = useLocation();
+  const {state} = useLocation();
   const item: MediaItemWithOwner = state.item;
-
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <h2 className="text-3xl font-bold">CHECK THIS SICK POST!</h2>
-      <h3 className="text-2xl">{item.title}</h3>
-      <p className="text-gray-400 mb-4">{new Date(item.created_at).toLocaleString('fi-FI')}</p>
+    <>
+      <h2>Single</h2>
+      <h3>{item.title}</h3>
+      <p>{new Date(item.created_at).toLocaleString('fi-FI')}</p>
       {item.media_type.includes('image') ? (
-        <img
-          className="m-4 max-w-full lg:max-w-3xl rounded-lg shadow-md"
-          src={item.filename}
-          alt={item.title}
-        />
+        <img src={item.filename} alt={item.title} />
       ) : (
-        <video
-          className="m-4 max-w-full lg:max-w-3xl rounded-lg shadow-md"
-          src={item.filename}
-          controls
-        />
+        <video src={item.filename} controls />
       )}
-      <div className="m-4 p-4 rounded-lg bg-black text-white max-w-full lg:max-w-3xl items-center justify-center">
-        <Likes item={item} likes={5} />
-        <Comments item={item} />
-        <p className="mb-2">{item.description}</p>
-        <p className="mb-2">Owner: {item.username}</p>
-        <p className="mb-2">Type: {item.media_type}</p>
-        <p className="mb-2">Size: {Math.round(item.filesize / 1024)} kB</p>
-
-      </div>
+      <Likes item={item} />
+      <p>{item.description}</p>
+      <p>Owner: {item.username}</p>
+      <p>Type: {item.media_type}</p>
+      <p>Size: {Math.round(item.filesize / 1024)} kB</p>
+      <Comments item={item}/>
       <button
-        className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-red-700 ease-in-out duration-300"
         onClick={() => {
           navigate(-1);
         }}
+        className="block w-full bg-indigo-400 p-2 text-center transition-all duration-500 ease-in-out hover:bg-indigo-700"
       >
-        Go Back
+        go back
       </button>
-    </div>
+    </>
   );
 };
 
